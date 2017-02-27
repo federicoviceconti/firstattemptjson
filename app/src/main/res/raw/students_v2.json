@@ -1,0 +1,265 @@
+{
+	"students": [
+		{
+			"nome": "Francesco Cipolla",
+			"email": "francescocpll@gmail.com",
+			"github": "@cipollafrancesco",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Matteo Manfreda",
+			"email": "manfredamatteo44@gmail.com",
+			"github": "@manfredamatteo",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Michele Foderaro",
+			"email": "michele.foderaro@virgilio.it",
+			"github": "@MicheleFoderaro",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Domenico Licciardi",
+			"email": "licciardi.domenico98@gmail.com",
+			"github": "@DomenicoLicciardi",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Gaetano Ciccone",
+			"email": "gaetano.ciccone97@gmail.com",
+			"github": "@gaetanociccone",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Nicolò Longobardo",
+			"email": "longobardo23@gmail.com",
+			"github": "@nicolongobardo",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Andrea Valenziano",
+			"email": "valenzianoa@gmail.com",
+			"github": "@AndreaValenziano",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Roberto Lentini",
+			"email": "roberto.lentini@live.com",
+			"github": "@RobertoLentini",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Oceana Luca",
+			"email": "lucad.oceana@gmail.com",
+			"github": "@lucaDoceana",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Torrese Valerio",
+			"email": "valerio.torrese@gmail.com",
+			"github": "@ValerioTorrese",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Petralia Marco",
+			"email": "marcopetralia97@gmail.com",
+			"github": "@marcopetralia",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Zuardi Salvatore",
+			"email": "salvatorezuardi2697@gmail.com",
+			"github": "@SalvatoreZuardi",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Federico Viceconti",
+			"email": "viceconti.federico@gmail.com",
+			"github": "@federicoviceconti",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Simone Zuccalà",
+			"email": "simo4197@gmail.com",
+			"github": "@simonezuccala",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Emanuele Paciolla",
+			"email": "emanuele.paciolla15@gmail.com",
+			"github": "@emanuelepaciolla",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Francesco Stella",
+			"email": "francesco.stella97@gmail.com",
+			"github": "@francescostella97",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Simone Scifo",
+			"email": "simone.scifo97@gmail.com ",
+			"github": "@SimoneScifo",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Antonio Cozzi",
+			"email": "antoniocozzi2@gmail",
+			"github": "@antonioCozzi",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Giuseppe Milicia",
+			"email": "milicia98@gmail.com",
+			"github": "@giuseppemilicia",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Davide Pagliaro",
+			"email": "dpagliaro97@gmail.com",
+			"github": "@davidepagliaro",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Luca Mantione",
+			"email": "luca.mantione@hotmail.it",
+			"github": "@LucaMantione",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Pietro Santochirico",
+			"email": "psantochirico@gmail.com",
+			"github": "@pietrosantochirico",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Flavio Chioda",
+			"email": "flaviochioda97@gmail.com",
+			"github": "@FlavioChioda",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Donato Virgilio",
+			"email": "donato.virg@gmail.com",
+			"github": "@donatovirgilio",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Gianfranco Colucci",
+			"email": "gianfrancolucci@gmail.com",
+			"github": "@gianfrancoColucci",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Andrea Rizzo",
+			"email": "ioandrearizzo@gmail.com",
+			"github": "@AndreaRizzo",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Gianluca Marano",
+			"email": "gianluca.marano1@gmail.com",
+			"github": "@GianlucaMarano",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Davide Popolano",
+			"email": "davide@popolano.it",
+			"github": "@davidepopolano",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		},
+		{
+			"nome": "Antonio Russo",
+			"email": "russoantonio1997@gmail.com",
+			"github": "@xXBlackBulletXx",
+			"corso": {
+				"id": 11,
+				"nome": "LTM11"
+			}
+		}
+	]
+}
