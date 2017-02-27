@@ -19,9 +19,11 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:layout_gravity="center"
                 android:src="@drawable/face_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:id="@+id/item_avatar"
+                android:layout_width="64dp"
+                android:layout_height="64dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

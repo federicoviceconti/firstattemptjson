@@ -8,19 +8,20 @@ import org.json.JSONObject;
  */
 
 public class Student {
-    private String name, email, github;
-
+    private String name, email, github, avatar;
     private Corso corso;
 
     private final String KEY_NAME = "nome";
     private final String KEY_MAIL = "email";
     private final String KEY_GITHUB = "github";
+    private final String KEY_AVATAR = "avatar";
 
     public Student(JSONObject jsonObjectStudente, Corso corso){
         try{
             name = jsonObjectStudente.getString(KEY_NAME);
             email = jsonObjectStudente.getString(KEY_MAIL);
             github = jsonObjectStudente.optString(KEY_GITHUB, "");
+            avatar = jsonObjectStudente.optString(KEY_AVATAR, "");
         }catch(JSONException je){
             je.printStackTrace();
         }
@@ -65,5 +66,13 @@ public class Student {
         final String urlGithub = "https://github.com/";
 
         return this.github.replace("@", urlGithub);
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

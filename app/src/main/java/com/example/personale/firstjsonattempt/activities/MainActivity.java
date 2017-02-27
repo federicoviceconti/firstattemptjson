@@ -58,11 +58,10 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.Cl
         final String KEY_COURSE = "corso";
 
         try {
-            JSONObject studentsJsonObject = new JSONObject(readFromJSON());
-            JSONArray studentsJsonArray = studentsJsonObject.getJSONArray(KEY_STUDENT);
+            JSONArray jsonArray = new JSONArray(readFromJSON());
 
-            for (int i = 0; i < studentsJsonArray.length(); i++) {
-                JSONObject jsonObject = studentsJsonArray.getJSONObject(i);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
                 tempStudent.add(new Student(jsonObject, new Corso(jsonObject.getJSONObject(KEY_COURSE))));
             }
 
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.Cl
         adapter.setStartSelection(!startSelection);
     }
 
-    private ActionMode.Callback callbackActionMode = new ActionMode.Callback() {
+    final private ActionMode.Callback callbackActionMode = new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             MenuInflater menuInflater = mode.getMenuInflater();

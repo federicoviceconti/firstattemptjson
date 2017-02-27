@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.personale.firstjsonattempt.R;
+import com.example.personale.firstjsonattempt.controller.ImageDownloadTasker;
 import com.example.personale.firstjsonattempt.controller.StudentList;
 import com.example.personale.firstjsonattempt.model.Student;
 
@@ -63,6 +64,7 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
         holder.nameTv.setText(list.getStudent(position).getName());
         holder.emailTv.setText(list.getStudent(position).getEmail());
         holder.corsoTv.setText(list.getStudent(position).getCorso().getCorso());
+        new ImageDownloadTasker(holder.avatarIv, holder.itemView.getContext()).execute(list.getStudent(position).getAvatar());
     }
 
     @Override
@@ -73,17 +75,18 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
     public class StudentVH extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         TextView nameTv, emailTv, corsoTv;
-        ImageView githubIv, fbIv;
+        ImageView githubIv, fbIv, avatarIv;
         ClickListener listener;
 
         public StudentVH(View itemView) {
             super(itemView);
-            listener = adapterListener;
             nameTv  = (TextView)itemView.findViewById(R.id.item_title);
             emailTv = (TextView)itemView.findViewById(R.id.item_mail);
             corsoTv = (TextView)itemView.findViewById(R.id.item_corso);
             githubIv   = (ImageView) itemView.findViewById(R.id.item_github);
+            avatarIv   = (ImageView) itemView.findViewById(R.id.item_avatar);
             fbIv = (ImageView) itemView.findViewById(R.id.item_fb);
+            listener = adapterListener;
 
             githubIv.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
