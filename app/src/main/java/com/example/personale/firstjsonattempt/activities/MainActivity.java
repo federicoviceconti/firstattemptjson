@@ -2,8 +2,12 @@ package com.example.personale.firstjsonattempt.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.personale.firstjsonattempt.R;
 import com.example.personale.firstjsonattempt.adapter.StudentAdapter;
@@ -27,10 +31,11 @@ import java.util.ArrayList;
  * Created by personale on 27/02/2017.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements StudentAdapter.ClickListener{
 
     RecyclerView recycler;
     StudentAdapter adapter;
+    private ActionMode actionMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Creating student adapter
-        adapter = new StudentAdapter(this);
+        adapter = new StudentAdapter(this, this);
         fetchFromJSON();
 
         //Creating and setting the recycler
@@ -90,5 +95,68 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return writer.toString();
+    }
+
+    @Override
+    public void OnClickListener(int pos) {
+        adapter.setSelected(pos);
+
+        if(adapter.getSize() == 0){
+            finishActionMode();
+        }
+    }
+
+    @Override
+    public void OnLongClickListener(int pos, boolean startSelection) {
+        if(actionMode == null || !startSelection){
+            this.startSupportActionMode(callbackActionMode);
+            adapter.setSelected(pos);
+        }else {
+            actionMode = null;
+        }
+
+        adapter.setStartSelection(!startSelection);
+    }
+
+    private ActionMode.Callback callbackActionMode = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            MenuInflater menuInflater = mode.getMenuInflater();
+            menuInflater.inflate(R.menu.menu_mode, menu);
+            actionMode = mode;
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.mode_delete:
+                    adapter.delete();
+                    break;
+            }
+
+            finishActionMode();
+
+            return true;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+        }
+    };
+
+    public void finishActionMode(){
+        adapter.clearSelection();
+
+        if(actionMode != null){
+            actionMode.finish();
+            actionMode = null;
+        }
+        adapter.setStartSelection(false);
     }
 }

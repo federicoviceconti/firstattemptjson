@@ -1,4 +1,4 @@
-package com.example.personale.firstjsonattempt.adapter;
+package com.example.personale.firstjsonattempt.controller;
 
 import com.example.personale.firstjsonattempt.model.Student;
 
@@ -24,7 +24,8 @@ public class StudentList {
     }
 
     public void removeStudent(int pos){
-        students.remove(pos);
+        if(pos < students.size())
+            students.remove(pos);
     }
 
     public Student getStudent(int pos){
