@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.personale.firstjsonattempt.R;
+import com.example.personale.firstjsonattempt.adapter.itemtouchhelper.SimpleItemTouchHelperCallback;
 import com.example.personale.firstjsonattempt.adapter.StudentAdapter;
 import com.example.personale.firstjsonattempt.model.Corso;
 import com.example.personale.firstjsonattempt.model.Student;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.Cl
     RecyclerView recycler;
     StudentAdapter adapter;
     private ActionMode actionMode;
+    private ItemTouchHelper.Callback itemtouchhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,13 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.Cl
         adapter = new StudentAdapter(this, this);
         fetchFromJSON();
 
+        // Drag and drop
+        itemtouchhelper = new SimpleItemTouchHelperCallback(adapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(itemtouchhelper);
+
         //Creating and setting the recycler
         recycler = (RecyclerView) findViewById(R.id.recycler);
+        touchHelper.attachToRecyclerView(recycler);
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setAdapter(adapter);
     }
@@ -97,20 +105,24 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.Cl
     }
 
     @Override
-    public void OnClickListener(int pos) {
-        adapter.setSelected(pos);
+    public void OnClickListener(int pos, boolean startSelection) {
+        if(startSelection){
+            adapter.setSelected(pos);
 
-        if(adapter.getSize() == 0){
-            finishActionMode();
+            if(adapter.getSize() == 0){
+                finishActionMode();
+            }
         }
     }
 
     @Override
     public void OnLongClickListener(int pos, boolean startSelection) {
-        if(actionMode == null || !startSelection){
+        if(pos == -1){
+            finishActionMode();
+        } else if(actionMode == null || !startSelection) {
             this.startSupportActionMode(callbackActionMode);
             adapter.setSelected(pos);
-        }else {
+        } else {
             actionMode = null;
         }
 

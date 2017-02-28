@@ -18,21 +18,16 @@ import java.lang.ref.WeakReference;
  */
 
 public class ImageDownloadTasker extends AsyncTask<String, Void, Bitmap> {
-    private final Context context;
     private ProgressDialog progress;
     private WeakReference<ImageView> imageViewWeakReference;
 
-    public ImageDownloadTasker(ImageView imageView, Context context){
+    public ImageDownloadTasker(ImageView imageView){
         imageViewWeakReference = new WeakReference<>(imageView);
-        this.context = context;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progress = new ProgressDialog(context);
-        progress.setMessage("Please wait...");
-        progress.show();
     }
 
     @Override
@@ -65,7 +60,5 @@ public class ImageDownloadTasker extends AsyncTask<String, Void, Bitmap> {
                 }
             }
         }
-
-        progress.dismiss();
     }
 }

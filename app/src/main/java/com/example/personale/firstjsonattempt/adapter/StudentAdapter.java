@@ -11,17 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.personale.firstjsonattempt.R;
+import com.example.personale.firstjsonattempt.adapter.itemtouchhelper.ItemTouchHelperAdapter;
 import com.example.personale.firstjsonattempt.controller.ImageDownloadTasker;
 import com.example.personale.firstjsonattempt.controller.StudentList;
 import com.example.personale.firstjsonattempt.model.Student;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by personale on 27/02/2017.
  */
 
-public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> {
+public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> implements ItemTouchHelperAdapter {
 
     private final Context context;
     private StudentList list;
@@ -64,12 +66,34 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
         holder.nameTv.setText(list.getStudent(position).getName());
         holder.emailTv.setText(list.getStudent(position).getEmail());
         holder.corsoTv.setText(list.getStudent(position).getCorso().getCorso());
-        new ImageDownloadTasker(holder.avatarIv, holder.itemView.getContext()).execute(list.getStudent(position).getAvatar());
+        new ImageDownloadTasker(holder.avatarIv).execute(list.getStudent(position).getAvatar());
     }
 
     @Override
     public int getItemCount() {
         return list.getSize();
+    }
+
+    @Override
+    public void onItemMove(int fromPos, int toPos) {
+        if(fromPos < toPos){
+            for(int i = fromPos; i < toPos; i++){
+                Collections.swap(list.getStudents(), i, i + 1);
+            }
+        }else{
+            for(int i = fromPos; i > toPos; i--){
+                Collections.swap(list.getStudents(), i, i - 1);
+            }
+        }
+
+        adapterListener.OnLongClickListener(-1, false);
+        notifyItemMoved(fromPos, toPos);
+    }
+
+    @Override
+    public void onItemDismiss(int position) {
+        list.removeStudent(position);
+        notifyItemRemoved(position);
     }
 
     public class StudentVH extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
@@ -100,7 +124,7 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
                     openGitHub();
                     break;
                 default:
-                    listener.OnClickListener(getAdapterPosition());
+                    listener.OnClickListener(getAdapterPosition(), startSelection);
             }
         }
 
@@ -116,17 +140,13 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
 
         @Override
         public boolean onLongClick(View v) {
-            if(!startSelection){
-                listener.OnLongClickListener(getAdapterPosition(), startSelection);
-            }
-
-            startSelection = !startSelection;
+            listener.OnLongClickListener(getAdapterPosition(), startSelection);
             return true;
         }
     }
 
     public interface ClickListener{
-        void OnClickListener(int pos);
+        void OnClickListener(int pos, boolean startSelection);
         void OnLongClickListener(int pos, boolean startSelection);
     }
 }

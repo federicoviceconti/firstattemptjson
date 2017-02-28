@@ -28,6 +28,10 @@ public class StudentList {
             students.remove(pos);
     }
 
+    public ArrayList<Student> getStudents(){
+        return students;
+    }
+
     public Student getStudent(int pos){
         return students.get(pos);
     }
