@@ -2,14 +2,17 @@ package com.example.personale.firstjsonattempt.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.personale.firstjsonattempt.R;
 import com.example.personale.firstjsonattempt.adapter.itemtouchhelper.ItemTouchHelperAdapter;
 import com.example.personale.firstjsonattempt.controller.ImageDownloadTasker;
@@ -66,7 +69,12 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
         holder.nameTv.setText(list.getStudent(position).getName());
         holder.emailTv.setText(list.getStudent(position).getEmail());
         holder.corsoTv.setText(list.getStudent(position).getCorso().getCorso());
-        new ImageDownloadTasker(holder.avatarIv).execute(list.getStudent(position).getAvatar());
+        //new ImageDownloadTasker(holder.avatarIv).execute(list.getStudent(position).getAvatar());
+
+        Glide
+                .with(holder.itemView.getContext())
+                .load(list.getStudent(position).getAvatar())
+                .into(holder.avatarIv);
     }
 
     @Override
