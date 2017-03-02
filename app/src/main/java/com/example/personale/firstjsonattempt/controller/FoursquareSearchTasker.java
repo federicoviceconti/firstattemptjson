@@ -1,5 +1,6 @@
 package com.example.personale.firstjsonattempt.controller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -57,10 +58,9 @@ public class FoursquareSearchTasker extends AsyncTask<String, Void, ArrayList<Pl
 
         try {
             foursquareAPI = new FoursquareAPI();
-            String url = foursquareAPI.createQuery(params[0]);
+            String url = foursquareAPI.createQuery(params[0], params[1]);
 
-
-            JSONObject jsonResponse = foursquareAPI.getJSONFromUrl(url);
+            JSONObject jsonResponse = foursquareAPI.getJSONFromQuery(url);
             JSONArray jsonVenues = jsonResponse
                     .getJSONObject(KEY_RESPONSE)
                     .getJSONArray(KEY_VENUES);

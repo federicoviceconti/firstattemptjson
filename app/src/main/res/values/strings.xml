@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">FirstJSONAttempt</string>
     <string name="delete">Delete</string>
+    <string name="ok">Ok</string>
+    <string name="local">Local</string>
+    <string name="remote">Remote</string>
+
+    <string-array name="spinner_category">
+        <item>Restaurant</item>
+        <item>Toy center</item>
+        <item>Arte e intrattenimento</item>
+    </string-array>
 </resources>

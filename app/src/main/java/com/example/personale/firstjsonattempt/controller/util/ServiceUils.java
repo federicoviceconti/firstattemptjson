@@ -1,4 +1,4 @@
-package com.example.personale.firstjsonattempt.controller;
+package com.example.personale.firstjsonattempt.controller.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

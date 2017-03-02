@@ -1,4 +1,4 @@
-package com.example.personale.firstjsonattempt.controller;
+package com.example.personale.firstjsonattempt.controller.list;
 
 import com.example.personale.firstjsonattempt.model.Place;
 import com.example.personale.firstjsonattempt.model.Student;

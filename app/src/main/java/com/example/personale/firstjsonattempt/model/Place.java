@@ -7,18 +7,21 @@ import org.json.JSONObject;
  * Created by personale on 02/03/2017.
  */
 public class Place {
-    private String name, address, country, phone;
+    private String name, address, country, phone, image;
     private double lat, lng;
     private final String KEY_NAME = "name",
+            KEY_CATEGORY = "categories",
             KEY_ADDRESS = "address",
             KEY_COUNTRY = "country",
             KEY_LAT = "lat",
             KEY_LOCATION = "location",
             KEY_CONTACT = "contact",
             KEY_PHONE = "phone",
+            KEY_ICON = "icon",
             KEY_LNG = "lng";
 
-    public Place(JSONObject jsonVenues){
+
+    public Place(JSONObject jsonVenues) {
         try {
             name = jsonVenues.getString(KEY_NAME);
             country = jsonVenues.getJSONObject(KEY_LOCATION).optString(KEY_COUNTRY);
@@ -26,6 +29,11 @@ public class Place {
             lng = jsonVenues.getJSONObject(KEY_LOCATION).optDouble(KEY_LNG, 0.0);
             address = jsonVenues.getJSONObject(KEY_LOCATION).optString(KEY_ADDRESS, "");
             phone = jsonVenues.getJSONObject(KEY_CONTACT).optString(KEY_PHONE, "");
+
+            JSONObject iconJson = jsonVenues.getJSONArray(KEY_CATEGORY).getJSONObject(0);
+            image = (iconJson.getJSONObject("icon").optString("prefix")
+                    + "64"
+                    + iconJson.getJSONObject("icon").optString("suffix"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -33,6 +41,10 @@ public class Place {
 
     public String getName() {
         return name;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public void setName(String name) {

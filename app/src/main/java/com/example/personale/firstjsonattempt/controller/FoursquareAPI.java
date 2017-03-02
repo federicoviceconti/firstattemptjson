@@ -17,12 +17,21 @@ import java.net.URL;
 
 public class FoursquareAPI {
     private static final String BASE_URL = "https://api.foursquare.com/v2/venues/search?v=20161016&near=rome&query=";
+    private static final String BASE_URL_CATEGORY = "https://api.foursquare.com/v2/venues/categories?oauth_token=J32W05JL4FBH4ASNUJQVMSCECDSX4QXE5RUKJOHMQFPPNG2Z&v=20170302";
+    private static final String BASE_CATEGORY = "&categoryId=";
     private static final String TOKEN = "&client_id=PRNHPU011KKTDFQUMCP3BGHF3K0532MFRTN5VJAVD4KTVVDM&client_secret=0NRKK422MKHOAAI31C524G4LFV41ADGMKGOIF2MONVW4X2GB";
     private final String HTTPMETHOD = "GET";
 
-    JSONObject getJSONFromUrl(String queryUrl) throws IOException, JSONException {
+    JSONObject getJSONFromQuery(String queryUrl) throws IOException, JSONException {
+        return new JSONObject(createJson(createConnection(queryUrl)));
+    }
 
-        URL url = new URL(queryUrl);
+    JSONObject getJSONFromCategory(String categoryUrl) throws IOException, JSONException {
+        return new JSONObject(createJson(createConnection(categoryUrl)));
+    }
+
+    private URL createConnection(String s) throws IOException, JSONException {
+        URL url = new URL(s);
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
         httpURLConnection.setRequestMethod(HTTPMETHOD);
         httpURLConnection.setReadTimeout(10000);
@@ -30,7 +39,7 @@ public class FoursquareAPI {
         httpURLConnection.setDoInput(true);
         httpURLConnection.connect();
 
-        return new JSONObject(createJson(url));
+        return url;
     }
 
     private String createJson(URL url) throws IOException{
@@ -43,11 +52,14 @@ public class FoursquareAPI {
         }
         br.close();
 
-        Log.d("Async", sb.toString());
         return sb.toString();
     }
 
-    String createQuery(String query) {
-        return BASE_URL + query + TOKEN;
+    String createCategory() {
+        return BASE_URL_CATEGORY;
+    }
+
+    String createQuery(String query, String category) {
+        return BASE_URL + query + BASE_CATEGORY + category + TOKEN;
     }
 }

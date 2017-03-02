@@ -2,21 +2,18 @@ package com.example.personale.firstjsonattempt.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.personale.firstjsonattempt.R;
 import com.example.personale.firstjsonattempt.adapter.itemtouchhelper.ItemTouchHelperAdapter;
-import com.example.personale.firstjsonattempt.controller.ImageDownloadTasker;
-import com.example.personale.firstjsonattempt.controller.StudentList;
+import com.example.personale.firstjsonattempt.controller.list.StudentList;
 import com.example.personale.firstjsonattempt.model.Student;
 
 import java.util.ArrayList;
@@ -59,7 +56,7 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
 
     @Override
     public StudentVH onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_activity_main, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_activity_local, null);
         return new StudentVH(view);
     }
 

@@ -1,15 +1,14 @@
 package com.example.personale.firstjsonattempt.controller;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.example.personale.firstjsonattempt.R;
+import com.example.personale.firstjsonattempt.controller.util.ServiceUils;
 
 import java.lang.ref.WeakReference;
 
