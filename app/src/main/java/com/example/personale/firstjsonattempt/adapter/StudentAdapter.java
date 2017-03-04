@@ -2,7 +2,10 @@ package com.example.personale.firstjsonattempt.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.example.personale.firstjsonattempt.R;
 import com.example.personale.firstjsonattempt.adapter.itemtouchhelper.ItemTouchHelperAdapter;
 import com.example.personale.firstjsonattempt.controller.list.StudentList;
@@ -61,7 +65,7 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
     }
 
     @Override
-    public void onBindViewHolder(StudentVH holder, int position) {
+    public void onBindViewHolder(final StudentVH holder, int position) {
         holder.itemView.setSelected(isSelected(position));
         holder.nameTv.setText(list.getStudent(position).getName());
         holder.emailTv.setText(list.getStudent(position).getEmail());
@@ -71,7 +75,15 @@ public class StudentAdapter extends SelectableAdapter<StudentAdapter.StudentVH> 
         Glide
                 .with(holder.itemView.getContext())
                 .load(list.getStudent(position).getAvatar())
-                .into(holder.avatarIv);
+                .asBitmap()
+                .into(new BitmapImageViewTarget(holder.avatarIv){
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        final RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                        drawable.setCircular(true);
+                        holder.avatarIv.setImageDrawable(drawable);
+                    }
+                });
     }
 
     @Override

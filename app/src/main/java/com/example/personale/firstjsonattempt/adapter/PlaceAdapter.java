@@ -121,7 +121,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceVH> {
                     break;
                 case R.id.item_iv_geo:
                     i.setAction(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse("geo:0,0?q=" + p.getLat() + "," + p.getLng()));
+                    i.setData(Uri.parse("geo:0,0?q=" + p.getAddress()));
             }
 
             v.getContext().startActivity(i);
