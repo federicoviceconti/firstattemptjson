@@ -10,6 +10,7 @@
         android:layout_height="wrap_content">
 
         <AutoCompleteTextView
+            android:inputType="textAutoComplete"
             android:id="@+id/input_user"
             android:layout_weight="2"
             android:layout_width="match_parent"

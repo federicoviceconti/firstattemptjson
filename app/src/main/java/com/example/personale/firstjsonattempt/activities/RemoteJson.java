@@ -12,9 +12,9 @@ import android.widget.Spinner;
 
 import com.example.personale.firstjsonattempt.R;
 import com.example.personale.firstjsonattempt.adapter.PlaceAdapter;
-import com.example.personale.firstjsonattempt.controller.list.CategoryList;
 import com.example.personale.firstjsonattempt.controller.FoursquareCategoryTasker;
 import com.example.personale.firstjsonattempt.controller.FoursquareSearchTasker;
+import com.example.personale.firstjsonattempt.controller.list.CategoryList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +60,7 @@ public class RemoteJson extends AppCompatActivity implements View.OnClickListene
     }
 
     private void loadItemCategory() {
+        spinner.setVisibility(View.INVISIBLE);
         new FoursquareCategoryTasker(this, spinnerAdapter, spinner, categoryList).execute();
     }
 
@@ -77,11 +78,14 @@ public class RemoteJson extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        String itemSearched = inputUser.getText().toString();
-        String categorySearched = searchCategory(spinner.getSelectedItem().toString());
 
-        new FoursquareSearchTasker(this, adapter).execute(itemSearched, categorySearched);
-        addToComplete(itemSearched);
+        if(spinner.getVisibility() == View.VISIBLE){
+            String itemSearched = inputUser.getText().toString().toLowerCase();
+            String categorySearched = searchCategory(spinner.getSelectedItem().toString().toLowerCase());
+
+            new FoursquareSearchTasker(this, adapter).execute(itemSearched, categorySearched);
+            addToComplete(itemSearched);
+        }
     }
 
     private void addToComplete(String inputUser) {

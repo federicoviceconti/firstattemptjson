@@ -2,6 +2,7 @@ package com.example.personale.firstjsonattempt.controller;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -50,6 +51,7 @@ public class FoursquareCategoryTasker extends AsyncTask<String, Void, Map<String
         spinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, createList(stringStringMap));
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
+        spinner.setVisibility(View.VISIBLE);
     }
 
     private ArrayList<String> createList(Map<String, String> stringStringMap) {
